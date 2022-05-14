@@ -18,7 +18,7 @@ extension JSONDecoder {
     /// The decoder will now be able to decode two DateFormat, the 'standard' one and the 'yearMonthDay'
     ///
     /// Throws a 'DecodingError.dataCorruptedError' if an unsupported date format is found while parsing the document
-    var dateDecodingStrategyFormatters: [DateFormatter]? {
+    public var dateDecodingStrategyFormatters: [DateFormatter]? {
         @available(*, unavailable, message: "This variable is meant to be set only")
         get { return nil }
         set {

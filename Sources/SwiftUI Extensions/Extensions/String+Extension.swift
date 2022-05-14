@@ -9,11 +9,11 @@ import Foundation
 
 extension String {
     
-    var numberOfLines: Int {
+    public var numberOfLines: Int {
         return self.components(separatedBy: "\n").count
     }
     
-    func isInt() -> Bool {
+    public func isInt() -> Bool {
         
         if let _ = Int(self) {
             return true
@@ -22,7 +22,7 @@ extension String {
         return false
     }
     
-    func isFloat() -> Bool {
+    public func isFloat() -> Bool {
         
         if let _ = Float(self) {
             return true
@@ -31,7 +31,7 @@ extension String {
         return false
     }
     
-    func isDouble() -> Bool {
+    public func isDouble() -> Bool {
         let str = self.split(separator: ",").joined(separator: ["."])
         if let _ = Double(String(str)) {
             return true

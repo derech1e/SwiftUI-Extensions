@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension View {
-    func dismissToRoot() {
+    public func dismissToRoot() {
         let rootViewController = UIApplication.shared.connectedScenes
             .filter {$0.activationState == .foregroundActive }
             .map {$0 as? UIWindowScene }

@@ -51,35 +51,35 @@ extension Date {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
     
-    func toString(format: String = "yyyy-MM-dd") -> String {
+    public func toString(format: String = "yyyy-MM-dd") -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
     
-    func dateAndTimetoString(format: String = "yyyy-MM-dd HH:mm") -> String {
+    public func dateAndTimetoString(format: String = "yyyy-MM-dd HH:mm") -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
    
-    func timeIn24HourFormat() -> String {
+    public func timeIn24HourFormat() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: self)
     }
     
-    func startOfCurrentMonth() -> Date {
+    public func startOfCurrentMonth() -> Date {
         var components = Calendar.current.dateComponents([.year,.month], from: self)
         components.day = 1
         let firstDateOfMonth: Date = Calendar.current.date(from: components)!
         return firstDateOfMonth
     }
     
-    func endOfCurrentMonth() -> Date {
+    public func endOfCurrentMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfCurrentMonth())!
     }
     
@@ -88,27 +88,27 @@ extension Date {
         return cal.startOfDay(for: self)
     }
     
-    func addMonths(amountOfMonths: Int) -> Date {
+    public func addMonths(amountOfMonths: Int) -> Date {
         let endDate = Calendar.current.date(byAdding: .month, value: amountOfMonths, to: self)
         return endDate ?? Date()
     }
     
-    func removeMonths(amountOfMonths: Int) -> Date {
+    public func removeMonths(amountOfMonths: Int) -> Date {
         let endDate = Calendar.current.date(byAdding: .month, value: -amountOfMonths, to: self)
         return endDate ?? Date()
     }
     
-    func addYears(amountOfYears: Int) -> Date {
+    public func addYears(amountOfYears: Int) -> Date {
         let endDate = Calendar.current.date(byAdding: .year, value: amountOfYears, to: self)
         return endDate ?? Date()
     }
     
-    func removeYears(amountOfYears: Int) -> Date {
+    public func removeYears(amountOfYears: Int) -> Date {
         let endDate = Calendar.current.date(byAdding: .year, value: -amountOfYears, to: self)
         return endDate ?? Date()
     }
     
-    func getHumanReadableDayString() -> String {
+    public func getHumanReadableDayString() -> String {
         let weekdays = [
             "Sunday",
             "Monday",
@@ -124,7 +124,7 @@ extension Date {
     }
     
     
-    func timeSinceDate(fromDate: Date) -> String {
+    public func timeSinceDate(fromDate: Date) -> String {
         let earliest = self < fromDate ? self  : fromDate
         let latest = (earliest == self) ? fromDate : self
     
