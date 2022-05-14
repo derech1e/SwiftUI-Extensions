@@ -1,0 +1,57 @@
+//
+//  MaterialButtonStyle.swift
+//
+//
+//  Created by Thomas on 14.05.22.
+//
+
+import SwiftUI
+
+@available(iOS 15.0, *)
+public struct MaterialButtonStyle: ButtonStyle {
+    private let material: Material
+    private let cornerRadius: CGFloat
+    
+    public init(material: Material = .regular, cornerRadius: CGFloat = 10) {
+        self.material = material
+        self.cornerRadius = cornerRadius
+    }
+    
+    public func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            Spacer()
+            
+            configuration.label
+                .foregroundColor(.primary)
+                .font(Font.body.weight(.semibold))
+            
+            Spacer()
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .foregroundStyle(material)
+                .opacity(configuration.isPressed ? 0.75 : 1)
+        )
+    }
+}
+
+@available(iOS 15.0, *)
+extension View {
+    public func materialStyle(_ material: Material = .regular, cornerRadius: CGFloat = 10) -> some View {
+        HStack {
+            Spacer()
+            
+            self
+                .foregroundColor(.primary)
+                .font(Font.body.weight(.semibold))
+            
+            Spacer()
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .foregroundStyle(material)
+        )
+    }
+}
